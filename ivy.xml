@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="introsde"
+        module="storage-service"
+        status="integration">
+	</info>
+		<dependencies>
+		
+        <!-- JAX-WS bundle dependency --> 
+        <dependency org="com.sun.xml.ws" name="jaxws-rt" rev="2.2.10"/>
+	
+        <!-- Other dependencies -->
+        <dependency org="javax.ejb" name="javax.ejb-api" rev="3.2"/>
+        <dependency org="org.json" name="json" rev="20140107"/>
+        <dependency org="com.googlecode.json-simple" name="json-simple" rev="1.1.1"/> <dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.4.2">
+            <artifact name="jackson-core" type="jar"/>
+        </dependency>
+        <dependency org="com.fasterxml.jackson.module" name="jackson-module-jaxb-annotations" rev="2.4.1">
+            <artifact name="jackson-module-jaxb-annotations" type="jar"/>
+        </dependency>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.4.2">
+            <artifact name="jackson-databind" type="jar"/>
+        </dependency>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.4.2">
+            <artifact name="jackson-annotations" type="jar"/>
+        </dependency>
+        <dependency org="com.fasterxml.jackson.jaxrs" name="jackson-jaxrs-json-provider" rev="2.4.2">
+            <artifact name="jackson-jaxrs-json-provider" type="jar"/>
+        </dependency>
+        <dependency org="com.fasterxml.jackson.jaxrs" name="jackson-jaxrs-base" rev="2.4.2">
+            <artifact name="jackson-jaxrs-base" type="jar"/>
+        </dependency>
+   
+        <!-- FOR REST -->
+        <dependency org="org.glassfish.jersey.core" name="jersey-common" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-server" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-servlet" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-jetty-http" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-jdk-http" rev="2.11"/>
+    
+    </dependencies>
+
+	
+</ivy-module>
