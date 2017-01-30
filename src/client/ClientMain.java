@@ -45,7 +45,7 @@ public class ClientMain {
 			
 			System.out.println("1 - Choose Account");
 			System.out.println("2 - Create Account");
-			System.out.println("3 - Exit");
+			System.out.println("q - Exit");
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			String option = reader.readLine();
@@ -215,7 +215,9 @@ public class ClientMain {
     	JSONArray goals = new JSONArray(client.doGET("/profile/"+userId+"/goals")
     										.readEntity(String.class));
     	
-    	System.out.println("/n/tCurrent goals!");
+    	System.out.println("\n\tCurrent goals!");
+    	if(goals.length() == 0)
+    		System.out.println("No achievements currently!");
     	for (int i = 0; i < goals.length(); i++)
     	{
     		JSONObject g = goals.getJSONObject(i);
@@ -234,6 +236,8 @@ public class ClientMain {
     										.readEntity(String.class));
     	
     	System.out.println("\n\tLifetime Achievements!");
+    	if(goals.length() == 0)
+    		System.out.println("No achievements currently!");
     	for (int i = 0; i < goals.length(); i++)
     	{
     		JSONObject g = goals.getJSONObject(i);
