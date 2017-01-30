@@ -12,7 +12,7 @@ This implementation of the Virtual LifeCoach idea presents itself with a simple 
 
 The application consists of five services, 2 REST-based and 3 through SOAP, as seen in the the following diagram:
 
-![Alt text](architecture.png?raw=true "Architecture")
+![Architecture picture](architecture.png?raw=true "Architecture")
 
 ##Services:
 
