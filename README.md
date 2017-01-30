@@ -16,16 +16,16 @@ The application consists of five services, 2 REST-based and 3 through SOAP, as s
 
 ##Services:
 
-*Local Database Service:  this layer sits on top of an Sqlite database. It is used to persist and retrieve local data. It is exposed using SOAP.
+* **Local Database Service**:  this layer sits on top of an Sqlite database. It is used to persist and retrieve local data. It is exposed using SOAP.
 
-*Adapter Service: this layer is used to interface with an External API, Pixabay. The API is accessed via REST and is used to retrieve pictures using a keyword. Internal services need to access is via REST.
+* **Adapter Service**: this layer is used to interface with an External API, Pixabay. The API is accessed via REST and is used to retrieve pictures using a keyword. Internal services need to access is via REST.
 
-*Storage Service: this layer is build on top of the previous two and it simply provides a single access point to all data to 
+* **Storage Service**: this layer is build on top of the previous two and it simply provides a single access point to all data to 
 the system logic services. The service is exposed using SOAP and provides calls for every data handled by the lower layers.
 
-*Business Logic Service: this service is used to handle computation and decision making. It decides whether a goal is completed and what kind of feedback to give the user. It is the third SOAP-based service in the application.
+* **Business Logic Service**: this service is used to handle computation and decision making. It decides whether a goal is completed and what kind of feedback to give the user. It is the third SOAP-based service in the application.
 
-*Process Centric Service: the last service is used as a gateway by the user client via REST. It then forwards relevant requests to the Business Logic Service and Storage Service according to complexity. Simple operations such as readPerson go straight to the Storage Service as it consists in a simple retrieval while more complex operations that need to make decisions go to the Business Logic Service.
+* **Process Centric Service**: the last service is used as a gateway by the user client via REST. It then forwards relevant requests to the Business Logic Service and Storage Service according to complexity. Simple operations such as readPerson go straight to the Storage Service as it consists in a simple retrieval while more complex operations that need to make decisions go to the Business Logic Service.
 
 The operations described in the introduction can be initiated using the command line interface in the user client.
 All user input is sent via REST to a Process Centric Service in charge of forwarding requests, either to the Business Logic Service or to the Storage Service for less complex operations. 
