@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.core.Response;
@@ -148,7 +147,7 @@ public class ClientMain {
     	JSONObject user = new JSONObject();
     	
     	for(String s : profileFields){
-        	System.out.print("Update "+ s +"(y/n)");
+        	System.out.println("Update "+ s +"(y/n)");
         	if(reader.readLine().equals("y")){
         		if(s.equals("birthdate"))
         			System.out.println("Insert "+s+"(yyyy-mm-dd): ");
