@@ -52,10 +52,6 @@ public class ClientMain {
 			switch (option) {
 			case "1":
 				getUsers();
-				
-				for(String s : users){
-					System.out.println("UserId "+ s);
-				}
 				String choice = reader.readLine();
 				if(users.contains(choice)){
 					menu(choice);
@@ -65,7 +61,7 @@ public class ClientMain {
 			case "2":
 				register(reader);
 				break;
-			case "3":
+			case "q":
 				run = false;
 				break;
 			default:
@@ -295,9 +291,16 @@ public class ClientMain {
     	Response response = client.doGET("/profile");
     	JSONArray people = new JSONArray(response.readEntity(String.class));
     	users = new ArrayList<String>();
+
+		for(String s : users){
+			System.out.println("UserId "+ s);
+		}
     	for (int i = 0; i < people.length(); i++)
     	{
-    		users.add(""+people.getJSONObject(i).getLong("personId"));
+    		String userId = ""+people.getJSONObject(i).getLong("personId");
+    		System.out.println(userId + " - "+people.getJSONObject(i).get("firstname")
+    				+" "+ people.getJSONObject(i).get("lastname"));
+    		users.add(userId);
     	}
 
     }
@@ -305,20 +308,25 @@ public class ClientMain {
 	public static void printProfile(JSONObject p) {
        	if(p != null){
 			System.out.println("");
-			System.out.println(" ==> Firstname: " + p.get("firstname"));
-			System.out.println(" ==> Lastname: " + p.get("lastname"));
-			System.out.println(" ==> Birthdate: " + dateFormat.format(p.get("birthdate")));
-			System.out.println(" ==> Email: " + p.get("email"));
+			if(!p.isNull("firstname"))
+				System.out.println(" ==> Firstname: " + p.get("firstname"));
+			if(!p.isNull("lastname"))
+				System.out.println(" ==> Lastname: " + p.get("lastname"));
+			if(!p.isNull("birthdate"))
+				System.out.println(" ==> Birthdate: " + dateFormat.format(p.get("birthdate")));
+			if(!p.isNull("email"))
+				System.out.println(" ==> Email: " + p.get("email"));
 			System.out.println(" ==> Current Health Profile:\n");
 
-			JSONArray m = p.getJSONObject("currentHealth").getJSONArray("measure");
-		
-			if(m != null){
+			if(!p.getJSONObject("currentHealth").isNull("measure")){
+				JSONArray m = p.getJSONObject("currentHealth").getJSONArray("measure");
+
 				for (int i = 0; i < m.length(); i++)
 		    	{
 		    		printMeasure(m.getJSONObject(i));
 		    	}
-			} else {
+			} 
+			else {
 				System.out.println("\t No Measures");
 			}
 			System.out.println("");
@@ -330,10 +338,14 @@ public class ClientMain {
 	public static void printMeasure(JSONObject m) {
 		
 		if(m != null){
-			System.out.println("\t ==> Mid: " + m.get("mid"));
-			System.out.println("\t ==> Date Registered: " + dateFormat.format(m.get("dateRegistered")));
-			System.out.println("\t ==> Measure Value: " + m.get("measureValue"));
-			System.out.println("\t ==> Measure Type: " + m.getJSONObject("measureDefinition").get("measureType"));
+			if(!m.isNull("mid"))
+				System.out.println("\t ==> Mid: " + m.get("mid"));
+			if(!m.isNull("dateRegistered"))
+				System.out.println("\t ==> Date Registered: " + dateFormat.format(m.get("dateRegistered")));
+			if(!m.isNull("measureValue"))
+				System.out.println("\t ==> Measure Value: " + m.get("measureValue"));
+			if(!m.isNull("measureDefinition"))
+				System.out.println("\t ==> Measure Type: " + m.getJSONObject("measureDefinition").get("measureType"));
 			
 			System.out.println("");
 	   	} else{
