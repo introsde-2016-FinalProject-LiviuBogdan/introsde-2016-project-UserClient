@@ -128,13 +128,12 @@ public class ClientMain {
     	JSONObject user = new JSONObject();
     	
     	for(String s : profileFields){
-        	if(reader.readLine().equals("y")){
-        		if(s.equals("birthdate"))
-        			System.out.println("Insert "+s+"(yyyy-mm-dd): ");
-        		else	
-        			System.out.println("Insert "+s+": ");
-            	user.put(s, (Object)reader.readLine());
-        	}
+    		if(s.equals("birthdate"))
+    			System.out.println("Insert "+s+"(yyyy-mm-dd): ");
+    		else	
+    			System.out.println("Insert "+s+": ");
+        	user.put(s, (Object)reader.readLine());
+        	
         	System.out.println();
     	}
     	user.put("currentHealth", new JSONObject());
